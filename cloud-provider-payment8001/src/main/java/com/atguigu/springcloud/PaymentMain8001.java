@@ -16,6 +16,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PaymentMain8001 {
     public static void main(String[] args) {
     SpringApplication.run(PaymentMain8001.class,args);
-        System.out.println("8001-服务提供者启动成功");
+        System.out.println("----8001-微服务提供者启动成功");
     }
 }
