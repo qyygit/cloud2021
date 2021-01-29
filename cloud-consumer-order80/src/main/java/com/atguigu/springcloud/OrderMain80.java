@@ -1,23 +1,20 @@
 package com.atguigu.springcloud;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-
 /**
-*@ClassName: 
-*@Description
-*@Author Qyy
-*@Date 2021/1/18
-*@Time 16:38
-*/
+ * @author ：QYY
+ * @date ：Created in 2021/1/20 14:48
+ * @description：
+ * @version:
+ */
 @SpringBootApplication
 @EnableEurekaClient
-public class PaymentMain8001 {
+public class OrderMain80 {
     public static void main(String[] args) {
-    SpringApplication.run(PaymentMain8001.class,args);
-        System.out.println("----8001-微服务提供者启动成功");
+        SpringApplication.run(OrderMain80.class,args);
+        System.out.println("----------80服务消费者启动成功");
     }
 }
