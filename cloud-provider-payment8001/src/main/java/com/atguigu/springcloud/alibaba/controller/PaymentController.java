@@ -1,16 +1,17 @@
-package com.atguigu.springcloud.controller;
+package com.atguigu.springcloud.alibaba.controller;
 
+import com.atguigu.springcloud.dao.PaymentDao;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
-
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -32,6 +33,8 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
+    @Resource
+        private PaymentDao paymentDao;
 
     @Resource
     private DiscoveryClient discoveryClient;
@@ -94,4 +97,13 @@ public class PaymentController {
         return  serverPort;
     }
 
+    @GetMapping(value = "/payment/findAll")
+    @RequestMapping
+    public List<Payment> findAll(int pageSize , int pagenum){
+        RowBounds rowBounds = new RowBounds(pageSize,pagenum);
+        List<Payment> all = paymentDao.findAll(rowBounds);
+
+        log.info("--------查询结果" + all);
+            return all;
+    }
 }
