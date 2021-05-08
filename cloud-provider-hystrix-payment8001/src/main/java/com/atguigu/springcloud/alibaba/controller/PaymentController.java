@@ -1,4 +1,4 @@
-package com.atguigu.springcloud.controller;
+package com.atguigu.springcloud.alibaba.controller;
 
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +33,14 @@ public class PaymentController {
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id){
         String result = paymentService.paymentInfo_Timeout(id);
         log.info(" result  :" + result );
+        return result;
+    }
+
+    //服务熔断
+    @GetMapping("/payment/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info("****result："+result);
         return result;
     }
 }
